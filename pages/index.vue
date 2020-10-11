@@ -65,8 +65,8 @@
                     placeholder="Enter cell number"
                   ></b-form-input>                  
                 </b-form-group>
-                <div class="d-flex justify-content-between col-12 px-0">
-                  <div class="col-5 px-0">
+                <div class="d-md-flex justify-content-between col-12 px-0">
+                  <div class="col-md-5 px-0">
                     <b-form-group id="input-group-6" label="Gender:" label-for="input-6">
                       <b-form-select
                         id="input-6"
@@ -76,18 +76,58 @@
                       ></b-form-select>
                     </b-form-group>
                   </div>
-                  <div class="col-5 px-0">
-                    <b-form-group id="input-group-6" label="Gender:" label-for="input-6">
+                  <div class="col-md-5 px-0">
+                    <b-form-group id="input-group-7" label="Ethnic Group:" label-for="input-7">
                       <b-form-select
-                        id="input-6"
-                        v-model="form.gender"
-                        :options="genders"
+                        id="input-7"
+                        v-model="form.ethnic_group"
+                        :options="ethnic_groups"
                         required
                       ></b-form-select>
                     </b-form-group>
                   </div>
                 </div>
-                 <b-button class="mt-3 w-100" variant="primary" ref="nextBtn" @click.prevent="toPageTwo">
+                <div class="d-md-flex justify-content-between col-12 px-0">
+                  <div class="col-md-5 px-0">
+                    <b-form-group id="input-group-8" label="Nationality:" label-for="input-8">
+                      <b-form-select
+                        id="input-8"
+                        v-model="form.nationality"
+                        :options="nationalities"
+                        required
+                      ></b-form-select>
+                    </b-form-group>
+                  </div>
+                  <div class="col-md-5 px-0">
+                    <b-form-group id="input-group-9" label="South African ID Number" label-for="input-9" description="">
+                      <b-form-input id="input-9" v-model="form.id_number" type="text" required placeholder="ID Number"></b-form-input>
+                    </b-form-group>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between col-12 px-0">
+                  <div class="col-md-5 px-0">
+                    
+                  </div>                  
+                  <div class="col-5 px-0">
+                    <b-form-group id="location" label="Current Living Location" label-for="location">
+                      <b-form-select
+                        id="location"
+                        v-model="form.location"
+                        :options="countries"
+                        required
+                      ></b-form-select>
+                    </b-form-group>
+                  </div>
+                </div>
+                <b-form-group id="input-group-12" label="Do you have any disability?" label-for="input-12">
+                  <b-form-select
+                    id="input-12"
+                    v-model="form.disability"
+                    :options="disabilities"
+                    required
+                  ></b-form-select>
+                </b-form-group>
+                <b-button class="mt-3 w-100" variant="primary" ref="nextBtn" @click.prevent="toPageTwo">
                     Next
                 </b-button>
               </div>
@@ -230,7 +270,11 @@
           titles: [
           {text: 'Please select some item', value: null}, { text: 'Miss', value: 'a'}, { text: 'Ms',value: 'b'}, { text: 'Mrs', value: 'c'}, { text: 'Ms',value: 'b' }, { text: 'Mr',value: 'd'
           }],
+          disabilities: [ { text: "No, I don't have any disabilities", value: null }, {text: 'Yes, I am disabled', value: ''} ],
           genders: [ { text: 'Please select', value: null }, {text: 'Male', value: ''}, {text: 'Female', value: ''} ],
+          countries: [ { text: 'Please select', value: null }, {text: 'South Africa', value: ''}, {text: 'Zimbabwe', value: ''}, {text: 'Malawi', value: ''}, {text: 'Namibia', value: ''}, {text: 'Ireland', value: ''}, {text: 'United Kingdom', value: ''}, {text: 'Mauritius', value: ''}, {text: 'Zambia', value: ''}, {text: 'Botswana', value: ''}, {text: 'Swaziland', value: ''}, {text: 'Trinidad and Tobago', value: ''}, {text: 'Saint Lucia (Caribbean)', value: ''}, {text: 'Canada', value: ''}, {text: 'Cameroon', value: ''}, {text: 'Finland', value: ''}, {text: 'Ethopia', value: ''}, {text: 'Nigeria', value: ''}, {text: 'Kenya', value: ''}, {text: 'Ghana', value: ''} ],
+          ethnic_groups: [ { text: 'Please select', value: null }, {text: 'Caucasian White', value: ''}, {text: 'African', value: ''}, , {text: 'Asian', value: ''}, , {text: 'Indian', value: ''} ],
+          nationalities: [ { text: 'Please select', value: null }, {text: 'South African Citizen', value: ''}, {text: 'Non South African Citizen', value: ''}, , {text: 'Non South African Citizen (With Work Permit)', value: ''}, , {text: 'Non South African Citizen (With Permanent Residence)', value: ''} ],
           names: [
             'Personal', 'Education', 'Experience', 'Submit'
           ],
@@ -239,7 +283,11 @@
             name: '',
             last_name: '', 
             cellphone: '',
-            gender: null
+            gender: null,
+            ethnic_group: null,
+            nationality: null,
+            disability: null,
+            location: null
           }
         };
       },
