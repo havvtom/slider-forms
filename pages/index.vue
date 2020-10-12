@@ -62,13 +62,13 @@
                   </div>
                   <div class="col-md-5 px-0">
                     <b-form-group
-                      id="input-group-3"
+                      id="input-group-15"
                       label="Cellphone Number:"
-                      label-for="input-3"
+                      label-for="cellphone"
                       description=""
                     >
                       <b-form-input
-                        id="input-3"
+                        id="cellphone"
                         v-model="form.cellphone"
                         type="email"
                         required
@@ -139,7 +139,7 @@
                     required
                   ></b-form-select>
                 </b-form-group>
-                <b-button class="mt-3 w-100" variant="primary" ref="nextBtn" @click.prevent="toPageTwo">
+                <b-button class="my-3 w-100" variant="primary" ref="nextBtn" @click.prevent="toPageTwo">
                     Next
                 </b-button>
               </div>
