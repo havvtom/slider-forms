@@ -2,15 +2,7 @@
   <div class="body d-flex">
     <div class="container col-10 col-md-8 col-lg-6  pt-5 pr-3 pl-3 pb-3">
       <header class="mb-4">Registration Form</header>
-      <!-- <div class="d-flex progress mx-5 ">
-        <div class="step w-100 p-2" v-for="(name, index) in names" >
-          <p :ref="`p-${index}`" class="mb-3">{{ name }}</p>
-          <div class="bullet" :ref="`bullet-${index}`">
-            <span>{{ index+1 }}</span>
-          </div>
-          <div class="check fas fa-check" :ref="`check-${index}`"></div>
-        </div>
-      </div> -->
+      
       <div class="d-flex bar text-center justify-content-around bg-secondary mb-3">
         <div v-for="(name, index) in names" class="step p-2">
           <p :ref="`p-${index}`" class="mb-3">{{ name }}</p>
@@ -145,9 +137,9 @@
               </div>
         </div>
         <div class="col-12 page border border-primary">
-          <div class="">
+          <div class="page">
                 <div class="title">
-                  Education
+                  Education & Work Experience
                 </div>
                 <b-form-group id="education" label="Highest Education Qualification" label-for="education">
                   <b-form-select
@@ -157,18 +149,6 @@
                     required
                   ></b-form-select>
                 </b-form-group>
-                
-                <div class="field-btns d-flex justify-content-between">                    
-                    <b-button class="mt-3 prev prev-1 w-25"  @click.prevent="toPageOne" variant="primary">Previous</b-button>
-                    <b-button class="mt-3 next next-1 w-25" @click.prevent="toPageThree" variant="primary">Next</b-button>
-                  </div>
-              </div>
-        </div>
-        <div class="col-12 page border border-primary">
-          <div class="page">
-                <div class="title">
-                  Work Experience
-                </div>
                 <b-form-group id="current_situation" label="What are you currently doing?" label-for="current_situation">
                   <b-form-select
                     id="current_situation"
@@ -213,8 +193,8 @@
                   <div class="">Curriculum Vitae</div>
                   <b-form-file v-model="form.file" class="mt-2" plain></b-form-file>
                 <div class="field-btns d-flex justify-content-between">                    
-                    <b-button class="mt-3 rev prev-2 w-25"  @click.prevent="toPageTwoPrevious" variant="primary">Previous</b-button>
-                    <b-button class="mt-3 next next-2 w-25" @click.prevent="toPageFour" variant="primary">Next</b-button>
+                    <b-button class="mt-3 rev prev-2 w-25"  @click.prevent="toPageOne" variant="primary">Previous</b-button>
+                    <b-button class="mt-3 next next-2 w-25" @click.prevent="toPageThree" variant="primary">Next</b-button>
                   </div>
               </div>
         </div>
@@ -282,7 +262,7 @@
                 <b-form-group
                 <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">I have read and I confirm that I accept the terms and conditions of this website.</b-form-checkbox>
                 <div class="field-btns d-flex justify-content-between">                    
-                    <b-button type="submit" class="mt-3 prev prev-3 w-25"  @click.prevent="toPageThreePrevious" variant="primary">Previous</b-button>
+                    <b-button type="submit" class="mt-3 prev prev-3 w-25"  @click.prevent="toPageTwoPrevious" variant="primary">Previous</b-button>
                     <b-button type="submit" class="mt-3 next next-2 w-25" @click.prevent="onSubmit" variant="primary">Register</b-button>
                   </div>
               </div>
@@ -314,7 +294,7 @@
           ethnic_groups: [ { text: 'Please select', value: null }, {text: 'Caucasian White', value: ''}, {text: 'African', value: ''}, , {text: 'Asian', value: ''}, , {text: 'Indian', value: ''} ],
           nationalities: [ { text: 'Please select', value: null }, {text: 'South African Citizen', value: ''}, {text: 'Non South African Citizen', value: ''}, , {text: 'Non South African Citizen (With Work Permit)', value: ''}, , {text: 'Non South African Citizen (With Permanent Residence)', value: ''} ],
           names: [
-            'Personal', 'Education', 'Experience', 'Submit'
+            'Personal', 'Education & Experience', 'Submit'
           ],
           form: {
             title: null, 
@@ -385,9 +365,9 @@
           this.$refs["p-2"][0].classList.add('active')
         },
         onSubmit() {
-          this.$refs["bullet-3"][0].classList.add('active')
-          this.$refs["check-3"][0].classList.add('active')
-          this.$refs["p-3"][0].classList.add('active')
+          this.$refs["bullet-2"][0].classList.add('active')
+          this.$refs["check-2"][0].classList.add('active')
+          this.$refs["p-2"][0].classList.add('active')
           
           setTimeout(()=>{
             alert('You have been successfully registered')
