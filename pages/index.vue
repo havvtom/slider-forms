@@ -16,7 +16,7 @@
       
         <div class="col-12 page border border-secondary" :style="style" >
           <div class="">
-                <div class="title">
+                <div class="title my-4">
                   Personal Information
                 </div>
                 <div class="d-md-flex justify-content-between col-12 px-0">
@@ -155,7 +155,7 @@
         </div>
         <div class="col-12 page border border-secondary">
           <div class="page">
-                <div class="title">
+                <div class="title my-4">
                   Education & Work Experience
                 </div>
                 <b-form-group id="education" label="Highest Education Qualification" label-for="education">
@@ -227,7 +227,7 @@
                     plain
                   >                      
                   </b-form-file>
-                <div class="field-btns d-flex justify-content-between">                    
+                <div class="field-btns d-flex justify-content-between mb-3">                    
                     <b-button class="mt-3 rev prev-2 w-25"  @click.prevent="toPageOne" variant="primary">Previous</b-button>
                     <b-button class="mt-3 next next-2 w-25" @click.prevent="toPageThree" variant="primary">Next</b-button>
                   </div>
@@ -235,7 +235,7 @@
         </div>
         <div class="col-12 page border border-secondary">
           <div class="page">
-                <div class="title">
+                <div class="title my-4">
                   Submit
                 </div>
                 <b-form-group
