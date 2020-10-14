@@ -228,8 +228,8 @@
                   >                      
                   </b-form-file>
                 <div class="field-btns d-flex justify-content-between mb-3">                    
-                    <b-button class="mt-3 rev prev-2 w-25"  @click.prevent="toPageOne" variant="primary">Previous</b-button>
-                    <b-button class="mt-3 next next-2 w-25" @click.prevent="toPageThree" variant="primary">Next</b-button>
+                    <b-button class="mt-3 rev prev-2 w-50 mr-3"  @click.prevent="toPageOne" variant="primary">Previous</b-button>
+                    <b-button class="mt-3 next next-2  w-50" @click.prevent="toPageThree" variant="primary">Next</b-button>
                   </div>
               </div>
         </div>
@@ -311,8 +311,8 @@
                 <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('terms') }}</b-form-invalid-feedback>
                 </b-form-group>
                 <div class="field-btns d-flex justify-content-between">                    
-                    <b-button type="submit" class="mt-3 prev prev-3 w-25"  @click.prevent="toPageTwoPrevious" variant="primary">Previous</b-button>
-                    <b-button type="submit" class="mt-3 next next-2 w-25" @click.prevent="onSubmit" variant="primary">Register</b-button>
+                    <b-button type="submit" class="mt-3 prev prev-3 w-50 mr-3"  @click.prevent="toPageTwoPrevious" variant="primary">Previous</b-button>
+                    <b-button type="submit" class="mt-3 next next-2 w-50" @click.prevent="onSubmit" variant="primary">Register</b-button>
                 </div>
               </div>
         </div>
