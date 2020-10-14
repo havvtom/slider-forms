@@ -148,6 +148,23 @@
                     :options="disabilities"
                   ></b-form-select>
                 </b-form-group>
+                <b-form-group
+                  id="disability_1"
+                  :style="display_disability_1"
+                  label="Please describe the nature of your disability"
+                  label-for="disability_1"
+                  description=""
+                >
+                  <b-form-input
+                    id=""
+                    v-model="form.disability_1"
+                    type="text"
+                    v-validate="'required'" name="disability_1" ref="disability_1" :class="{'input': true, 'is-invalid': errors.has('disability_1') }"
+                    data-vv-as="disabilities"
+                    placeholder="i.e Vision, Movement, Hearing, etc"
+                  ></b-form-input>     
+                  <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('disability_1') }}</b-form-invalid-feedback>             
+                </b-form-group>
                 <b-button class="my-3 w-100" variant="primary" ref="nextBtn" @click.prevent="toPageTwo">
                     Next
                 </b-button>
@@ -329,6 +346,7 @@
         return {
           areValid: '',
           style: '',
+          display_disability_1: '',
           titles: [
           {text: 'Please select some item', value: null}, { text: 'Miss', value: '1'}, { text: 'Ms',value: '2'}, { text: 'Mrs', value: '3'}, { text: 'Ms',value: '4' }, { text: 'Mr',value: '5'
           }],
@@ -370,6 +388,20 @@
                 setTimeout(()=>{
                 alert('You have been successfully registered')
               }, 800)
+            },
+            'form.disability' () {
+              if(this.form.disability == 2) {
+                console.log('yeees')
+                this.display_disability_1 = {
+                  "display" : "block"
+                }
+              } else {
+                this.display_disability_1 = {
+                  "display" : "none"
+                }
+              }
+
+              
             }
           },
       methods: {
@@ -383,7 +415,11 @@
 
         },
         toPageTwo () {
-          this.validate(['name', 'title', 'surname', 'ethnic', 'gender', 'nationality', 'location'], "-100%", 0)        
+          var validatables = ['name', 'title', 'surname', 'ethnic', 'gender', 'nationality', 'location']
+          if( this.form.disability == 2 ) {
+              validatables.push('disability_1')
+          }
+          this.validate(validatables, "-100%", 0)        
         },
         toPageTwoPrevious () {
           this.style = {

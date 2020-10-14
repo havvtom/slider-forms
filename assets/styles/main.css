@@ -70,6 +70,9 @@
 	width: 150px;
 	background: #262626;
 }*/
+#disability_1{
+	display: none;
+}
 
 .bar .step p{
 	font-size: 18px;
