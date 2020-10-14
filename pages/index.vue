@@ -3,7 +3,7 @@
     <div class="container col-10 col-md-8 col-lg-6  pt-5 pr-3 pl-3 pb-3">
       <header class="mb-4">Registration Form</header>
       
-      <div class="d-flex bar text-center justify-content-around bg-secondary mb-3">
+      <div class="bar text-center justify-content-around mb-3">
         <div v-for="(name, index) in names" class="step p-2">
           <p :ref="`p-${index}`" class="mb-3">{{ name }}</p>
           <div class="bullet" :ref="`bullet-${index}`">
@@ -14,7 +14,7 @@
       </div>
       <form class="form-outer  row flex-row flex-nowrap mt-4 pb-4">
       
-        <div class="col-12 page border border-primary" :style="style" >
+        <div class="col-12 page border border-secondary" :style="style" >
           <div class="">
                 <div class="title">
                   Personal Information
@@ -153,7 +153,7 @@
                 </b-button>
               </div>
         </div>
-        <div class="col-12 page border border-primary">
+        <div class="col-12 page border border-secondary">
           <div class="page">
                 <div class="title">
                   Education & Work Experience
@@ -233,7 +233,7 @@
                   </div>
               </div>
         </div>
-        <div class="col-12 page border border-primary">
+        <div class="col-12 page border border-secondary">
           <div class="page">
                 <div class="title">
                   Submit
