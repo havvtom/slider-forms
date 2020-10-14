@@ -184,6 +184,24 @@
                   ></b-form-select>
                   <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('education') }}</b-form-invalid-feedback>
                 </b-form-group>
+                <div id="studying" :style="display_studying">
+                  <b-form-group
+                    id="course"                    
+                    label="What are you studying?"
+                    label-for="course"
+                    description=""
+                  >
+                    <b-form-input
+                      id=""
+                      v-model="form.course"
+                      type="text"
+                      v-validate="'required'" name="course" ref="course" :class="{'input': true, 'is-invalid': errors.has('course') }"
+                      data-vv-as="course"
+                      placeholder="e.g BSc Computer Science"
+                    ></b-form-input>     
+                    <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('course') }}</b-form-invalid-feedback>             
+                  </b-form-group>
+                </div>
                 <b-form-group id="current_situation" label="What are you currently doing?" label-for="current_situation">
                   <b-form-select
                     id="current_situation"
@@ -347,6 +365,7 @@
           areValid: '',
           style: '',
           display_disability_1: '',
+          display_studying: '',
           titles: [
           {text: 'Please select some item', value: null}, { text: 'Miss', value: '1'}, { text: 'Ms',value: '2'}, { text: 'Mrs', value: '3'}, { text: 'Ms',value: '4' }, { text: 'Mr',value: '5'
           }],
@@ -373,6 +392,8 @@
             ethnic_group: null,
             nationality: null,
             disability: 1,
+            disability_1: '',
+            course: '',
             location: null,
             education: null,
             previous_employment: null,
@@ -391,7 +412,7 @@
             },
             'form.disability' () {
               if(this.form.disability == 2) {
-                console.log('yeees')
+                this.form.disability_1 = ''
                 this.display_disability_1 = {
                   "display" : "block"
                 }
@@ -399,9 +420,18 @@
                 this.display_disability_1 = {
                   "display" : "none"
                 }
+              }              
+            },
+            'form.education' () {
+              if(this.form.education == 1) {
+                this.display_studying = {
+                  "display" : "block"
+                }
+              } else {
+                  this.display_studying = {
+                  "display" : "none"
+                }
               }
-
-              
             }
           },
       methods: {

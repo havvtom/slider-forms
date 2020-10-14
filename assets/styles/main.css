@@ -74,6 +74,10 @@
 	display: none;
 }
 
+#studying{
+	display: none;
+}
+
 .bar .step p{
 	font-size: 18px;
 	font-weight: 500;
