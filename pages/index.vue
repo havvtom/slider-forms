@@ -303,6 +303,7 @@
                 <b-form-checkbox 
                   class="mb-2 mr-sm-2 mb-sm-0"
                   v-validate="'required:true'" name="terms" :class="{'input': true, 'is-invalid': errors.has('terms') }"
+                  v-model="form.terms"
                   data-vv-as="terms"
                 >
                   I have read and I confirm that I accept the terms and conditions of this website.
@@ -359,10 +360,18 @@
             previous_employment: null,
             current_situation: null,
             salary: null,
-            availability: null
+            availability: null,
+            terms: ''
           }
         };
       },
+      watch: {
+            'areValid' () {
+                setTimeout(()=>{
+                alert('You have been successfully registered')
+              }, 800)
+            }
+          },
       methods: {
         toPageOne () {
           this.style = {
@@ -414,18 +423,14 @@
               this.$refs[`check-${index}`][0].classList.add('active')
               this.$refs[`p-${index}`][0].classList.add('active')
           }
-          if( index == 2 ) {
+          if( index == 2 && areValid ) {
             this.areValid =  areValid
           }
         },
         onSubmit() {
-          this.validate(['email', 'password', 'password_confirmation'], "-200%", 2) 
-
-          if ( this.areValid == true ) {
-              setTimeout(()=>{
-              alert('You have been successfully registered')
-            }, 800)
-          }
+          this.validate(['email', 'password', 'password_confirmation', 'terms'], "-200%", 2) 
+          
+          
         },
         onReset() {}
       }
