@@ -201,6 +201,80 @@
                     ></b-form-input>     
                     <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('course') }}</b-form-invalid-feedback>             
                   </b-form-group>
+                  <b-form-group
+                        id="course"                    
+                        label="At which institution are you studying?"
+                        label-for="course"
+                        description=""                   
+                      >
+                      <b-form-input
+                        id=""
+                        v-model="form.college"
+                        type="text"
+                        v-validate="'required'" name="college" ref="college" :class="{'input': true, 'is-invalid': errors.has('college') }"
+                        data-vv-as="college"
+                        placeholder="e.g University of Pretoria"
+                      ></b-form-input>     
+                      <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('college') }}</b-form-invalid-feedback>             
+                      </b-form-group>
+                  <div class="d-flex flex-wrap">
+                    <div class="col-md-6 school">
+                      <b-form-group>
+                        <label for="finish-datepicker">Start Date</label>
+                        <client-only><date-picker
+                          :minimumView="'month'" :maximumView="'month'"
+                          class="w-100"
+                          placeholder="MM/YYYY"
+                          format="MM/yyyy"
+                          v-model="form.date_start" />
+                        </client-only>
+                      </b-form-group>
+                    </div>
+                    <div class="col-md-6">
+                      <b-form-group>
+                        <label for="finish-datepicker">Estimated Finish</label>
+                        <client-only><date-picker
+                          :minimumView="'month'" :maximumView="'month'"
+                          class="w-100"
+                          placeholder="MM/YYYY"
+                          format="MM/yyyy"
+                          v-model="form.date_finish" />
+                        </client-only>
+                      </b-form-group>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="high_school" :style="display_high_school">
+                  <div class="d-md-flex">
+                    <b-form-group
+                      id="high_school_name"                    
+                      label="High School Name"
+                      label-for="high_school"
+                      description=""
+                      class="col-md-6"
+                    >
+                      <b-form-input
+                        id=""
+                        v-model="form.high_school"
+                        type="text"
+                        v-validate="'required'" name="high_school" ref="high_school" :class="{'input': true, 'is-invalid': errors.has('high_school') }"
+                        data-vv-as="high_school"
+                        placeholder="e.g St David's"
+                      ></b-form-input>     
+                      <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('high_school') }}</b-form-invalid-feedback>             
+                    </b-form-group>
+                    <b-form-group class="col-md-6">
+                          <label for="finish-datepicker">Year Matriculated</label>
+                          <client-only><date-picker
+                            :minimumView="'month'" :maximumView="'month'"
+                            class="w-100"
+                            placeholder="MM/YYYY"
+                            format="MM/yyyy"
+                            v-model="form.date_start" />
+                          </client-only>
+                        </b-form-group>
+                  </div>
                 </div>
                 <b-form-group id="current_situation" label="What are you currently doing?" label-for="current_situation">
                   <b-form-select
@@ -366,6 +440,7 @@
           style: '',
           display_disability_1: '',
           display_studying: '',
+          display_high_school: '',
           titles: [
           {text: 'Please select some item', value: null}, { text: 'Miss', value: '1'}, { text: 'Ms',value: '2'}, { text: 'Mrs', value: '3'}, { text: 'Ms',value: '4' }, { text: 'Mr',value: '5'
           }],
@@ -400,7 +475,8 @@
             current_situation: null,
             salary: null,
             availability: null,
-            terms: ''
+            terms: '',
+            course: '',
           }
         };
       },
@@ -424,13 +500,21 @@
             },
             'form.education' () {
               if(this.form.education == 1) {
+                this.form.course = ''
+                this.form.college = ''
                 this.display_studying = {
+                  "display" : "block"
+                }
+                this.display_high_school = {
                   "display" : "block"
                 }
               } else {
                   this.display_studying = {
-                  "display" : "none"
-                }
+                    "display" : "none"
+                  }
+                  this.display_high_school = {
+                    "display" : "none"
+                  }
               }
             }
           },
@@ -459,8 +543,16 @@
           this.$refs["check-1"][0].classList.remove('active')
           this.$refs["p-1"][0].classList.remove('active')
         },
-        toPageThree () {
-          this.validate(['education', 'current_situation', 'previous_employment', 'desired_job', 'salary', 'availability'], "-200%", 1) 
+        toPageThree () {          
+
+          var validatables = ['education', 'current_situation', 'previous_employment', 'desired_job', 'salary', 'availability']
+          if( this.form.education == 1 ) {            
+            var moreValidatables = ['course', 'college']
+            validatables.push(...moreValidatables)
+            this.validate(validatables, "-200", 1)
+          }
+          this.validate(validatables, "-200%", 0)  
+          // this.validate(['education', 'current_situation', 'previous_employment', 'desired_job', 'salary', 'availability'], "-200%", 1) 
           
         },
         toPageThreePrevious () {
