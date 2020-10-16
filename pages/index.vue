@@ -591,6 +591,9 @@
                     }
                 }
               else if( this.form.education == 3 || this.form.education == 4 ){
+                    this.display_qualification = {
+                      "display" : "none"
+                    }
                     this.display_studying = {
                       "display" : "none"
                     }
