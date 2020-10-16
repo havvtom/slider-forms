@@ -184,7 +184,7 @@
                   ></b-form-select>
                   <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('education') }}</b-form-invalid-feedback>
                 </b-form-group>
-                <div id="studying" :style="display_studying">
+                <div id="studying" :style="display_studying" class="bg-secondary">
                   <b-form-group
                     id="course"                    
                     label="What are you studying?"
@@ -245,7 +245,70 @@
                   </div>
 
                 </div>
-                <div class="high_school" :style="display_high_school">
+                <div class=" bg-secondary" id="qualification" :style="display_qualification">
+                  <div class="qualification">
+                    <b-form-group
+                      id="qualification_name"                    
+                      label="Qualification name"
+                      label-for="qualification_name"
+                      description=""
+                    >
+                      <b-form-input
+                        id=""
+                        v-model="form.qualification_name"
+                        type="text"
+                        v-validate="'required'" name="qualification_name" ref="qualification_name" :class="{'input': true, 'is-invalid': errors.has('qualification_name') }"
+                        data-vv-as="qualification_name"
+                        placeholder="e.g BSc Computer Science"
+                      ></b-form-input>     
+                      <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('qualification_name') }}</b-form-invalid-feedback>             
+                    </b-form-group>
+                    <b-form-group
+                          id="institution"                    
+                          label="Institution"
+                          label-for="institution"
+                          description=""                   
+                        >
+                        <b-form-input
+                          id=""
+                          v-model="form.institution"
+                          type="text"
+                          v-validate="'required'" name="institution" ref="institution" :class="{'input': true, 'is-invalid': errors.has('institution') }"
+                          data-vv-as="institution"
+                          placeholder="e.g University of Pretoria"
+                        ></b-form-input>     
+                        <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('institution') }}</b-form-invalid-feedback>             
+                    </b-form-group>
+                    </div>
+                  <div class="d-flex flex-wrap">
+                    <div class="col-md-6 school">
+                      <b-form-group>
+                        <label for="finish-datepicker">Start Date</label>
+                        <client-only><date-picker
+                          :minimumView="'month'" :maximumView="'month'"
+                          class="w-100"
+                          placeholder="MM/YYYY"
+                          format="MM/yyyy"
+                          v-model="form.date_start" />
+                        </client-only>
+                      </b-form-group>
+                    </div>
+                    <div class="col-md-6">
+                      <b-form-group>
+                        <label for="finish-datepicker">Finish Date</label>
+                        <client-only><date-picker
+                          :minimumView="'month'" :maximumView="'month'"
+                          class="w-100"
+                          placeholder="MM/YYYY"
+                          format="MM/yyyy"
+                          v-model="form.date_finish" />
+                        </client-only>
+                      </b-form-group>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="high_school bg-secondary" :style="display_high_school">
                   <div class="d-md-flex">
                     <b-form-group
                       id="high_school_name"                    
@@ -439,6 +502,7 @@
           areValid: '',
           style: '',
           display_disability_1: '',
+          display_qualification: '',
           display_studying: '',
           display_high_school: '',
           titles: [
@@ -502,13 +566,42 @@
               if(this.form.education == 1) {
                 this.form.course = ''
                 this.form.college = ''
+                this.display_qualification = {
+                      "display" : "none"
+                    }
+                this.display_high_school = {
+                  "display" : "none"
+                }
                 this.display_studying = {
                   "display" : "block"
                 }
                 this.display_high_school = {
                   "display" : "block"
+                }                
+              } 
+              else if( this.form.education == 5 || this.form.education == 6 ){
+                    this.display_studying = {
+                      "display" : "none"
+                    }
+                    this.display_high_school = {
+                      "display" : "none"
+                    }
+                    this.display_qualification = {
+                      "display" : "block"
+                    }
                 }
-              } else {
+              else if( this.form.education == 3 || this.form.education == 4 ){
+                    this.display_studying = {
+                      "display" : "none"
+                    }
+                    this.display_high_school = {
+                      "display" : "block"
+                    }
+                }
+              else {
+                  this.display_qualification = {
+                      "display" : "none"
+                    }
                   this.display_studying = {
                     "display" : "none"
                   }

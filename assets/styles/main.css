@@ -73,6 +73,14 @@
 	display: none;
 }
 
+#qualification {
+	display: none;
+}
+
+.qualification{
+	padding: 0px 15px;
+}
+
 .vdp-datepicker input{
 	border: 1px solid #ced4da;
 	border-radius: 4px;
@@ -119,8 +127,8 @@
 }
 
 .form-outer{
-	/*overflow: auto;*/
-	overflow: hidden;
+	overflow: auto;
+	/*overflow: hidden;*/
 }
 
 .title{
