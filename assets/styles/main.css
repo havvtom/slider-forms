@@ -80,7 +80,7 @@
 	width: 100%;
 }
 
-.vdp-datepicker__calendar {
+.vdp-datepicker__calendar{
     position: absolute;
     z-index: 100;
     right: -25px;
