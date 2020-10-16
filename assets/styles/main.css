@@ -80,15 +80,14 @@
 	width: 100%;
 }
 
-.vdp-datepicker__calendar{
+.vdp-datepicker .vdp-datepicker__calendar {
     position: absolute;
     z-index: 100;
-    right: -25px;
     background: #fff;
     width: 260px;
+    right: -25px;
     border: 1px solid #ccc;
 }
-
 
 #studying{
 	display: none;
