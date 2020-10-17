@@ -70,10 +70,15 @@
 }
 
 #disability_1{
+	padding: 0px 15px;
 	display: none;
 }
 
 #qualification {
+	display: none;
+}
+
+#employment{
 	display: none;
 }
 
@@ -121,14 +126,38 @@
 	transform: translate(-50%, -50%);
 }
 
+#key_skills__BV_description_{
+	color: white !important;;
+}
+
 .bar .step .check.active{
   display: block;
   color: #fff;
 }
 
+.employment_start_date{
+	padding: 0px 15px;
+}
+
+#reason_for_leaving{
+	padding: 0px 15px;
+}
+
+#current_benefits{
+	padding: 0px 15px;
+}
+
+#key_skills{
+	padding: 0px 15px;
+}
+
+.employment_duties{
+	padding: 0px 15px;
+}
+
 .form-outer{
-	/*overflow: auto;*/
-	overflow: hidden;
+	overflow: auto;
+	/*overflow: hidden;*/
 }
 
 .title{

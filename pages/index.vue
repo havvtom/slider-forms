@@ -150,6 +150,7 @@
                 </b-form-group>
                 <b-form-group
                   id="disability_1"
+                  class="bg-secondary pt-2 pb-3"
                   :style="display_disability_1"
                   label="Please describe the nature of your disability"
                   label-for="disability_1"
@@ -184,7 +185,7 @@
                   ></b-form-select>
                   <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('education') }}</b-form-invalid-feedback>
                 </b-form-group>
-                <div id="studying" :style="display_studying" class="bg-secondary">
+                <div id="studying" :style="display_studying" class="bg-secondary py-2">
                   <b-form-group
                     id="course"                    
                     label="What are you studying?"
@@ -246,7 +247,7 @@
 
                 </div>
                 <div class=" bg-secondary" id="qualification" :style="display_qualification">
-                  <div class="qualification">
+                  <div class="qualification py-2">
                     <b-form-group
                       id="qualification_name"                    
                       label="Qualification name"
@@ -308,7 +309,7 @@
                   </div>
 
                 </div>
-                <div class="high_school bg-secondary" :style="display_high_school">
+                <div class="high_school bg-secondary py-2" :style="display_high_school">
                   <div class="d-md-flex">
                     <b-form-group
                       id="high_school_name"                    
@@ -349,6 +350,138 @@
                   ></b-form-select>
                   <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('current_situation') }}</b-form-invalid-feedback>
                 </b-form-group>
+                <!-- change of employment dropdown -->
+                <div class="employment bg-secondary py-2" id="employment" :style="display_employment_dropdown">
+                  <div class="d-md-flex">
+                    <div class="col-md-6">
+                      <b-form-group
+                        class="mb-0"
+                        label="Current Job Title"
+                        label-for="job_title"
+                        description=""
+                      >
+                        <b-form-input
+                          id="job_title"
+                          v-model="form.job_title"
+                          placeholder="Enter your job title"
+                        ></b-form-input>
+                      </b-form-group>
+                    </div>
+                    <div class="col-md-6">
+                      <b-form-group
+                        class="mb-0"
+                        label="Current Company Name"
+                        label-for="comapny_name"
+                        description=""
+                      >
+                        <b-form-input
+                          id="comapny_name"
+                          v-model="form.comapny_name"
+                          placeholder="ABC Company"
+                        ></b-form-input>
+                      </b-form-group>
+                    </div>
+                  </div>
+                  <b-form-group class="employment_start_date">
+                    <label for="finish-datepicker">Start Date</label>
+                    <client-only><date-picker
+                      :minimumView="'month'" :maximumView="'month'"
+                      class="w-100"
+                      placeholder="MM/YYYY"
+                      format="MM/yyyy"
+                      v-model="form.date_start" />
+                    </client-only>
+                  </b-form-group>
+                  <b-form-group
+                    class="employment_duties"
+                    label="Duties & Responsibilities"
+                    label-for="duties"
+                    description=""
+                  >
+                    <b-form-textarea
+                      id="duties"
+                      v-model="form.duties"
+                      placeholder=""
+                    ></b-form-textarea>
+                  </b-form-group>
+                  <div class="d-md-flex">
+                    <div class="col-md-6">
+                      <b-form-group
+                        class="mb-0"
+                        label="Current Monthly Salary"
+                        label-for="current_salary"
+                        description=""
+                      >
+                      <b-input-group prepend="R">
+                        <b-form-input
+                          id="current_salary"
+                          v-model="form.current_salary"
+                          placeholder="e.g 5000"
+                        ></b-form-input>
+                      </b-input-group>
+                      </b-form-group>
+                    </div>
+                    <div class="col-md-6">
+                      <b-form-group id="cost_to_company" label="Annual Cost to Company" label-for="cost_to_company">
+                        <b-form-select
+                          id="cost_to_company"
+                          v-model="form.cost_to_company"
+                          :options="salaries"
+                          v-validate="'required'" name="cost_to_company" :class="{'input': true, 'is-invalid': errors.has('cost_to_company') }"
+                        ></b-form-select>
+                        <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('cost_to_company') }}</b-form-invalid-feedback>
+                      </b-form-group>
+                    </div>
+                  </div>
+                  <b-form-group
+                      id="current_benefits"                    
+                      label="Current Benefits"
+                      label-for="current_benefits"
+                      description=""
+                    >
+                      <b-form-input
+                        id="current_benefits"
+                        v-model="form.current_benefits"
+                        type="text"
+                        v-validate="'required'" name="current_benefits" ref="current_benefits" :class="{'input': true, 'is-invalid': errors.has('current_benefits') }"
+                        data-vv-as="current_benefits"
+                        placeholder="i.e Medical Aid, Car Allowance, 13th Cheque"
+                      ></b-form-input>     
+                      <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('current_benefits') }}</b-form-invalid-feedback>             
+                    </b-form-group>
+                    <b-form-group
+                      id="key_skills"                    
+                      label="Key Skills"
+                      label-for="key_skills"
+                      description="Please list the top 5x skills that you currently use. Please seperate skills with a comma or press enter after entering a skill."
+                    >
+                      <b-form-input
+                        id="key_skills"
+                        v-model="form.key_skills"
+                        type="text"
+                        v-validate="'required'" name="key_skills" ref="key_skills" :class="{'input': true, 'is-invalid': errors.has('key_skills') }"
+                        data-vv-as="key_skills"
+                        placeholder=""
+                      ></b-form-input>     
+                      <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('current_benefits') }}</b-form-invalid-feedback>             
+                    </b-form-group>
+                    <b-form-group
+                      id="reason_for_leaving"                    
+                      label="Why do you want to leave your current job?"
+                      label-for="reason_for_leaving"
+                    >
+                      <b-form-input
+                        id="reason_for_leaving"
+                        v-model="form.reason_for_leaving"
+                        type="text"
+                        v-validate="'required'" name="reason_for_leaving" ref="reason_for_leaving" :class="{'input': true, 'is-invalid': errors.has('reason_for_leaving') }"
+                        data-vv-as="reason_for_leaving"
+                        placeholder="e.g I want to make a career change"
+                      ></b-form-input>     
+                      <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('current_benefits') }}</b-form-invalid-feedback>             
+                    </b-form-group>
+                </div>
+                <!-- end of change of employment dropdown -->
                 <b-form-group id="previous_employment" label="Have you been employed previously?" label-for="previous_employment">
                   <b-form-select
                     id="previous_employment"
@@ -501,6 +634,7 @@
         return {
           areValid: '',
           style: '',
+          display_employment_dropdown: '',
           display_disability_1: '',
           display_qualification: '',
           display_studying: '',
@@ -549,6 +683,17 @@
                 setTimeout(()=>{
                 alert('You have been successfully registered')
               }, 800)
+            },
+            'form.current_situation' () {
+              if( this.form.current_situation == 1 || this.form.current_situation == 2) {
+                  this.display_employment_dropdown = {
+                    "display" : "block"
+                  }
+              } else {
+                this.display_employment_dropdown = {
+                  "display" : "none"
+                }
+              }
             },
             'form.disability' () {
               if(this.form.disability == 2) {
