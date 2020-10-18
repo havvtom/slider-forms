@@ -126,7 +126,11 @@
                 </div>
                 <div class="d-flex justify-content-between col-12 px-0">
                   <div class="col-md-5 px-0">
-                    
+                    <b-form-group>
+                      <label for="finish-datepicker">Date of birth</label>
+                      <client-only><date-picker></date-picker>
+                      </client-only>
+                    </b-form-group>
                   </div>                  
                   <div class="col-5 px-0">
                     <b-form-group id="location" label="Current Living Location" label-for="input-20">
@@ -148,6 +152,7 @@
                     :options="disabilities"
                   ></b-form-select>
                 </b-form-group>
+                <!-- disability_dropdown -->
                 <b-form-group
                   id="disability_1"
                   class="bg-secondary pt-2 pb-3"
@@ -166,6 +171,7 @@
                   ></b-form-input>     
                   <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('disability_1') }}</b-form-invalid-feedback>             
                 </b-form-group>
+                <!-- end of disability_dropdown -->
                 <b-button class="my-3 w-100" variant="primary" ref="nextBtn" @click.prevent="toPageTwo">
                     Next
                 </b-button>
@@ -340,6 +346,7 @@
                         </b-form-group>
                   </div>
                 </div>
+                <!-- current_situation -->
                 <b-form-group id="current_situation" label="What are you currently doing?" label-for="current_situation">
                   <b-form-select
                     id="current_situation"
@@ -350,6 +357,7 @@
                   ></b-form-select>
                   <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('current_situation') }}</b-form-invalid-feedback>
                 </b-form-group>
+
                 <!-- change of employment dropdown -->
                 <div class="employment bg-secondary py-2" id="employment" :style="display_employment_dropdown">
                   <div class="d-md-flex">
@@ -482,6 +490,10 @@
                     </b-form-group>
                 </div>
                 <!-- end of change of employment dropdown -->
+
+                <!-- end of current_situation -->
+
+                <!-- previously_employed -->
                 <b-form-group id="previous_employment" label="Have you been employed previously?" label-for="previous_employment">
                   <b-form-select
                     id="previous_employment"
@@ -492,6 +504,11 @@
                   ></b-form-select>
                   <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('previous_employment') }}</b-form-invalid-feedback>
                 </b-form-group>
+                <!-- employment history dropdown -->
+                  <Experience v-if="previously_employed"/>
+                <!-- end of employment history dropdown -->
+                
+                <!-- end pf previously_employed -->
                 <b-form-group id="desired_job" label="Desired Job Title" label-for="desired_job" description="">
                   <b-form-input id="desired_job" v-model="form.desired_job" type="text"
                     v-validate="'required'" name="desired_job" :class="{'input': true, 'is-invalid': errors.has('desired_job') }"
@@ -629,11 +646,17 @@
   </div>
 </template>
 <script type="text/javascript">
+  import Experience from "@/components/Experience"
     export default {
+      components: {
+        Experience
+      },
       data() {
         return {
           areValid: '',
-          style: '',
+          previously_employed: false,
+          style: '',      
+          employed_previously: '',    
           display_employment_dropdown: '',
           display_disability_1: '',
           display_qualification: '',
@@ -706,6 +729,13 @@
                   "display" : "none"
                 }
               }              
+            },
+            'form.previous_employment' () {
+              if(this.form.previous_employment == 1) {
+                  this.previously_employed = true         
+              } else {
+                this.previously_employed = false
+              }
             },
             'form.education' () {
               if(this.form.education == 1) {
