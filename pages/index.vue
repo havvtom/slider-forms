@@ -119,7 +119,7 @@
                     </b-form-group>
                   </div>
                   <div class="col-md-5 px-0">
-                    <b-form-group id="input-group-9" label="South African ID Number" label-for="input-9" description="">
+                    <b-form-group id="input-group-9" label="South African ID/Passport Number" label-for="input-9" description="">
                       <b-form-input id="input-9" v-model="form.id_number" type="text" required placeholder="ID Number"></b-form-input>
                     </b-form-group>
                   </div>
@@ -342,7 +342,7 @@
                             class="w-100"
                             placeholder="MM/YYYY"
                             format="MM/yyyy"
-                            v-model="form.date_start" />
+                            v-model="form.year_matriculated" />
                           </client-only>
                         </b-form-group>
                   </div>
@@ -794,7 +794,7 @@
         toPageOne () {
           this.style = {
             'margin-left' : "0%"
-          }
+          }         
           this.$refs["bullet-0"][0].classList.remove('active')
           this.$refs["check-0"][0].classList.remove('active')
           this.$refs["p-0"][0].classList.remove('active')
@@ -805,7 +805,8 @@
           if( this.form.disability == 2 ) {
               validatables.push('disability_1')
           }
-          this.validate(validatables, "-100%", 0)        
+          this.validate(validatables, "-100%", 0)  
+          window.scrollTo(0,0)      
         },
         toPageTwoPrevious () {
           this.style = {
@@ -822,8 +823,10 @@
             var moreValidatables = ['course', 'college']
             validatables.push(...moreValidatables)
             this.validate(validatables, "-200", 1)
+            window.scrollTo(0,0) 
           }
-          this.validate(validatables, "-200%", 0)  
+          this.validate(validatables, "-200%", 0) 
+          window.scrollTo(0,0)  
           // this.validate(['education', 'current_situation', 'previous_employment', 'desired_job', 'salary', 'availability'], "-200%", 1) 
           
         },

@@ -3,7 +3,7 @@
 		<div class="text-info mb-2" >
 		  Please list your previous employment below, you can add more by clicking the "Add More" button.
 		</div>
-		<div class="more_experience border border-primary p-2 mb-2" 
+		<div class="more_experience p-2 mb-2" 
 			v-for="(experience, index) in experiences"
 			:key="index"
 		>
@@ -66,8 +66,6 @@
                       </b-form-group>
                     </div>
                   </div>
-			<!-- <input type="" name="">
-			<button @click.prevent="addMore">Add More</button> -->
 		</div>	
 		<div class="d-flex pt-3 justify-content-end">
 			<b-button variant="secondary" v-if="index != 0" @click.prevent="removeExperience(index)">
@@ -92,7 +90,9 @@
 				this.experiences.push({company: ''})
 			},
 			removeExperience (i) {
-				this.experiences.splice(i, 1)
+				if (confirm("Are you sure you want to delete!")) {
+					this.experiences.splice(i, 1)
+				}
 			}
 		},
 	}
