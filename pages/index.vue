@@ -146,6 +146,7 @@
                     </b-form-group>
                   </div>
                 </div>
+                <Location v-if="form.location == 1"/>
                 <b-form-group id="input-group-12" label="Do you have any disability?" label-for="input-12">
                   <b-form-select
                     id="input-12"
@@ -648,9 +649,11 @@
 </template>
 <script type="text/javascript">
   import Experience from "@/components/Experience"
+  import Location from "@/components/Location"
     export default {
       components: {
-        Experience
+        Experience,
+        Location
       },
       data() {
         return {
@@ -798,7 +801,6 @@
           this.$refs["bullet-0"][0].classList.remove('active')
           this.$refs["check-0"][0].classList.remove('active')
           this.$refs["p-0"][0].classList.remove('active')
-
         },
         toPageTwo () {
           var validatables = ['name', 'title', 'surname', 'ethnic', 'gender', 'nationality', 'location']
@@ -817,7 +819,6 @@
           this.$refs["p-1"][0].classList.remove('active')
         },
         toPageThree () {          
-
           var validatables = ['education', 'current_situation', 'previous_employment', 'desired_job', 'salary', 'availability']
           if( this.form.education == 1 ) {            
             var moreValidatables = ['course', 'college']
@@ -844,14 +845,11 @@
                 return this.$validator.validate(f)
               } )
           );
-
           const areValid = (await results).every(isValid => isValid)
-
           if( areValid ) {
             this.style = {
                 'margin-left' : moveBy
               }
-
               this.$refs[`bullet-${index}`][0].classList.add('active')
               this.$refs[`check-${index}`][0].classList.add('active')
               this.$refs[`p-${index}`][0].classList.add('active')
