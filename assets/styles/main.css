@@ -160,8 +160,8 @@
 }
 
 .form-outer{
-	overflow: auto;
-	/*overflow: hidden;*/
+	/*overflow: auto;*/
+	overflow: hidden;
 }
 
 .title{
