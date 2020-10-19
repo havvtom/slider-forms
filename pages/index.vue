@@ -124,24 +124,25 @@
                     </b-form-group>
                   </div>
                 </div>
-                <div class="d-flex justify-content-between col-12 px-0">
+                <div class="d-md-flex justify-content-between col-12 px-0">
                   <div class="col-md-5 px-0">
-                    <b-form-group>
-                      <label for="finish-datepicker">Date of birth</label>
-                      <client-only><date-picker></date-picker>
-                      </client-only>
-                    </b-form-group>
-                  </div>                  
-                  <div class="col-5 px-0">
-                    <b-form-group id="location" label="Current Living Location" label-for="input-20">
+                    <label for="example-datepicker">Date of birth</label>
+                    <b-form-datepicker 
+                      id="date_of_birth" 
+                      class="mb-2"
+                      :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
+                      >                      
+                    </b-form-datepicker>
+                  </div>
+                  <div class="col-md-5 px-0">
+                    <b-form-group id="input-current_location" label="Current location" label-for="current_location">
                       <b-form-select
-                        id="input-20"
+                        id="current_location"
                         v-model="form.location"
-                        v-validate="'required'" name="location" :class="{'input': true, 'is-invalid': errors.has('location') }"
                         :options="countries"
-                        required
+                        v-validate="'required'" name="location" :class="{'input': true, 'is-invalid': errors.has('location') }"
                       ></b-form-select>
-                      <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('location') }}</b-form-invalid-feedback>
+                       <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('location') }}</b-form-invalid-feedback>
                     </b-form-group>
                   </div>
                 </div>
@@ -668,7 +669,7 @@
           disabilities: [ { text: "No, I don't have any disabilities", value: '1' }, {text: 'Yes, I am disabled', value: '2'} ],
           genders: [ { text: 'Please select', value: null }, {text: 'Male', value: '1'}, {text: 'Female', value: '2'}],
           availability: [ { text: 'Please select', value: null }, {text: 'Immediate', value: '1'}, {text: '7 days', value: '2'}, {text: '2 weeks', value: '3'}, {text: '30 days', value: '4'}, {text: '1 Calendar month', value: '5'}, {text: '2 Calendar months', value: '6'}, {text: 'More than 2 months', value: '7'} ],
-          salaries: [ { text: 'Please select', value: null }, {text: '0 - 50K Annually', value: '1'}, {text: '0 - 50K Annually', value: '2'}, {text: '50 - 100K Annually', value: '3'}, {text: '100 - 150K Annually', value: '4'}, {text: '150 - 200K Annually', value: '5'}, {text: '200 - 250K Annually', value: '6'}, {text: '300 - 350K Annually', value: '7'}, {text: '350 - 400K Annually', value: '8'}, {text: '400 - 450K Annually', value: '9'}, {text: '450 - 500K Annually', value: '10'}, {text: '500 - 600K Annually', value: '11'}, {text: '600 - 700K Annually', value: '12'}, {text: '700 - 800K Annually', value: '13'}, {text: '800 - 900K Annually', value: '14'}, {text: '900K - 1million Annually', value: '15'},
+          salaries: [ { text: 'Please select', value: null }, {text: '0 - 50K Annually', value: '1'}, {text: '50 - 100K Annually', value: '3'}, {text: '100 - 150K Annually', value: '4'}, {text: '150 - 200K Annually', value: '5'}, {text: '200 - 250K Annually', value: '6'}, {text: '300 - 350K Annually', value: '7'}, {text: '350 - 400K Annually', value: '8'}, {text: '400 - 450K Annually', value: '9'}, {text: '450 - 500K Annually', value: '10'}, {text: '500 - 600K Annually', value: '11'}, {text: '600 - 700K Annually', value: '12'}, {text: '700 - 800K Annually', value: '13'}, {text: '800 - 900K Annually', value: '14'}, {text: '900K - 1million Annually', value: '15'},
             {text: '1 - 1,25 million Annually', value: '16'}, {text: '1,25 - 1,5million Annually', value: '17'}, {text: '1,5 - 1,75mill Annually', value: '18'}, {text: '1,75 - 2million Annually', value: '19'}, {text: '2million + Annually', value: '20'}],
           employment: [ { text: 'Please select', value: null }, {text: 'Yes', value: '1'}, {text: 'No', value: '2'} ],
           situations: [ { text: 'Please select', value: null }, {text: 'Employed', value: '1'}, {text: 'Self Employed', value: '2'}, {text: 'Student', value: '3'},  {text: 'Graduate', value: '4'},  {text: 'Unemployed', value: '5'}],
