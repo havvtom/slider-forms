@@ -1,5 +1,5 @@
 <template>
-	<div class="d-md-flex justify-content-between bg-secondary py-2">
+	<div class="d-md-flex justify-content-between bg-secondary py-2 mb-2">
 		<div class="col-md-6">
 			<b-form-group id="input-province" label="Province" label-for="current_location">
               <b-form-select

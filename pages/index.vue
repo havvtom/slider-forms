@@ -511,6 +511,16 @@
                 <!-- end of employment history dropdown -->
                 
                 <!-- end pf previously_employed -->
+                <b-form-group id="input-preferred_work_location" label="Preferred Work Location" label-for="preferred_work_location">
+                  <b-form-select
+                    id="preferred_work_location"
+                    v-model="form.preferred_work_location"
+                    :options="countries"
+                    v-validate="'required'" name="location" :class="{'input': true, 'is-invalid': errors.has('location') }"
+                  ></b-form-select>
+                   <b-form-invalid-feedback id="input-2-live-feedback">{{ errors.first('location') }}</b-form-invalid-feedback>
+                </b-form-group>
+                <Location v-if="form.preferred_work_location == 1"/>
                 <b-form-group id="desired_job" label="Desired Job Title" label-for="desired_job" description="">
                   <b-form-input id="desired_job" v-model="form.desired_job" type="text"
                     v-validate="'required'" name="desired_job" :class="{'input': true, 'is-invalid': errors.has('desired_job') }"
@@ -696,6 +706,7 @@
             course: '',
             location: null,
             education: null,
+            preferred_work_location: null,
             previous_employment: null,
             current_situation: null,
             salary: null,
